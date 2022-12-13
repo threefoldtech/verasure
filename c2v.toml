@@ -1,0 +1,2 @@
+[project]
+additional_flags = "-I/usr/include/jerasure -I."
