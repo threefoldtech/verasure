@@ -1,6 +1,13 @@
 [translated]
 module main
 
+#include "@VMODROOT/jerasure-simple.h"
+
+#flag -I/usr/local/include/jerasure
+#flag @VMODROOT/jerasure-simple.o
+#flag -lJerasure
+#flag -lm
+
 struct Lldiv_t {
 	quot i64
 	rem  i64
@@ -70,7 +77,7 @@ fn main() {
 	erasure := &Erasure_t(0)
 	erasure = C.erasure_new(16, 4)
 	data := c'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer consectetur accumsan augue, at pharetra libero aliquet sed. Morbi accumsan nulla facilisis, gravida nulla et, interdum sem. Aliquam est turpis, congue at ultricies non, suscipit sed ante. Nullam commodo velit a scelerisque dapibus. In hac habitasse platea dictumst. Duis non tincidunt arcu. Maecenas molestie molestie dolor in luctus. Duis ultricies turpis eget diam finibus, in gravida arcu viverra. Ut nibh dolor, cursus vitae orci ut, dictum convallis.'
-	shards := C.erasure_encode(erasure, data, C.strlen(data))
+	shards := C.erasure_encode(erasure, data, unsafe { C.strlen(data) })
 	for i := 0; i < erasure.k; i++ {
 		C.printf(c'<%.*s>\n', int(shards.blocksize), shards.data[i])
 	}
