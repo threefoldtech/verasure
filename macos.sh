@@ -7,7 +7,7 @@ cd gf-complete
 autoreconf --force --install
 ./configure
 make
-echo Installing gf-complete library
+echo "Installing gf-complete library"
 sudo make install
 cd ..
 
@@ -15,7 +15,7 @@ cd Jerasure
 autoreconf --force --install
 ./configure
 make
-echo Installing jerasure library
+echo "Installing jerasure library"
 sudo make install
 cd ..
 
