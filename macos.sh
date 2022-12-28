@@ -19,4 +19,7 @@ echo "Installing jerasure library"
 sudo make install
 cd ..
 
+# note about how to compile jerasure-simple as dynamic library but not needed for this
+# gcc -dynamiclib -o libjerasuresimple.dylib jerasure-simple.c -I/usr/local/include/jerasure -lJerasure
+
 echo Done
